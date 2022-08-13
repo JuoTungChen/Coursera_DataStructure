@@ -25,7 +25,7 @@ public:
     }
 };
 
-
+//naive solution written by instructor
 int naive(int n, std::vector<Node> &nodes){
 	int maxheight = 0;
 	for (int leaf_index = 0; leaf_index < n; leaf_index++) {
@@ -38,44 +38,27 @@ int naive(int n, std::vector<Node> &nodes){
 
 }
 
-int dp(int i, std::vector<Node> &nodes, std::vector<int> h){
-	if(nodes[i].parent == NULL)
-		return 1;
-	if(h[i] != -1)
-		return h[i];
-	h[i] = 1 + dp(nodes[i].parent->key, nodes, h);
-	return h[i];
 
-}
-
-int ComputeHeight(int n, std::vector<Node> &nodes){
-	int maxheight = 0;
-	std::vector<int> height_table(n, -1);
-	for(int i = 0; i<n; i++){
-		maxheight = std::max(maxheight, dp(i, nodes, height_table));
-	}
-
-	return maxheight;
-
-}
-
+// Breadth-First Search (reference from discussion in leetcode 559. maximum depth of N-ary tree)
 int Calculate(std::vector<Node> &nodes){
-	int depth  = 0;
-	/*
-	if(nodes[0].parent == nullptr)
-		return 0;
-	*/
-	std::queue<Node> q;
+	int depth  = 0;     //keep track of the max depth of the tree
+
+	std::queue<Node> q;   //create queue to store nodes
+	
+	//O(n)
 	for(int i = 0; i<nodes.size(); i++){
-		if(nodes[i].parent == NULL)
-			q.push(nodes[i]);
+		if(nodes[i].parent == NULL)     //find the root of the tree
+			q.push(nodes[i]);     //push the root into the queue 
 	}
+	//break after q becomes empty
 	while(!q.empty()){
 		int count = q.size();
+		//break after count reaches -1
 		while(count --){
-			Node n = q.front();
+			Node n = q.front();  //return the front of the queue
 			q.pop();
-			for(int i = 0; i < n.children.size(); i++){
+			//go through the children list and push it into queue
+			for(int i = 0; i < n.children.size(); i++){  
 				q.push(*n.children[i]);
 			}
 		}
