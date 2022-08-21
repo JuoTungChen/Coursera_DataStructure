@@ -53,7 +53,6 @@ int main() {
        	}
     }
 
-    // Printing answer, write your code here
     	if(opening_brackets_stack.empty())
     		std::cout<< "Success" <<std::endl;
 	else
