@@ -29,11 +29,12 @@ class HeapBuilder {
 	      		cin >> data_[i];
 	  }
 	
-
+	// SiftDown Operation
 	void SiftDown(int i){
 		int min_index = i;
 		int l = 2*i+1;
 		int r = 2*i+2;
+		// should be data_.size()-1 instead of data_.size() 
 		if((l <= data_.size()-1) && (data_[l] < data_[min_index]))
 				min_index = l;
 
@@ -64,6 +65,7 @@ class HeapBuilder {
       }
   }
 
+  //my solution
   void GenerateSwaps(){
 	  swaps_.clear();
 	  for(int i = ((data_.size()/2) - 1); i>=0; i--){
