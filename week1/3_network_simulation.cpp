@@ -30,8 +30,27 @@ public:
     {}
 
     Response Process(const Request &request) {
-        // write your code here
+        while (!finish_time_.empty()) {
+            if(finish_time_.front() <= request.arrival_time)
+                  finish_time_.pop(); 
+            else
+                   break; 
+        }
+            
+        if(finish_time_.empty()){
+            finish_time_.push(request.arrival_time + request.process_time);
+            return Response(false, request.arrival_time);        
+        }
+        if(finish_time_.size() == size_){
+            return Response(true, -1);
+        
+        }
+        
+        int last_element = finish_time_.back();
+        finish_time_.push(last_element + request.process_time);
+        return Response(false, last_element);
     }
+
 private:
     int size_;
     std::queue <int> finish_time_;
