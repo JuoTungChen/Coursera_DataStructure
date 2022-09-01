@@ -17,6 +17,36 @@ After completed the Algorithmic Toolbox online course on Coursera, I decided to 
 
 
 ### Basic Data Structures
-1. Stacks, Queues, Trees
-2. Dynamic Arrays and Amortized Analysis
+
+1. Arrays and Linked-lists
+2. Stacks and Queues
+3. Trees
+
+### Dynamic Arrays and Amortized Analysis
+
+### Priority Queues and Disjoint Sets
+1. Priority Queues
+  a. Introduction
+  b. Heaps
+  c. Heap sort
+2. Disjoint Sets
+  a. Naive Implementation
+  b. Efficient Implementation
+
+### Hash Tables
+1. Introduction, Direct Addressing, and Chaining
+2. Hash Function
+3. Search Substrings
+4. Block Chain
+
+
+### Binary Search Trees
+1. Binary Search Trees
+2. AVL Trees
+
+
+### Binary Search Trees 2
+1. Applications
+2. Splay Trees
+
 
