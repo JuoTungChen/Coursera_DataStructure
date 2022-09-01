@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <deque>
 using std::cin;
 using std::cout;
 using std::vector;
@@ -18,6 +18,29 @@ void max_sliding_window_naive(vector<int> const & A, int w) {
     return;
 }
 
+void max_sliding_window(vector<int> const & A, int w){
+    std::deque<int> q(w);
+    for(int i = 0; i < w; i++){
+        while(!q.empty() && A[i] >= A[q.back()]){
+            q.pop_back();
+        }
+        q.push_back(i);
+    }
+
+    for(int i = w; i < A.size(); i++){
+        cout << A[q.front()] << " ";
+        while(!q.empty() && q.front() <= i - w){
+            q.pop_front();
+        }
+
+        while(!q.empty() && A[i] >= A[q.back()]){
+            q.pop_back();
+        }
+        q.push_back(i);
+    
+    }
+    cout << A[q.front()];
+}
 
 int main() {
     int n = 0;
@@ -30,7 +53,7 @@ int main() {
     int w = 0;
     cin >> w;
 
-    max_sliding_window_naive(A, w);
+    max_sliding_window(A, w);
 
     return 0;
 }
