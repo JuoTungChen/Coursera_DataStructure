@@ -68,14 +68,14 @@ class JobQueue {
     priority_queue<mypair, vector<mypair>, MyCompare> next_free_time;
 
     for(int i = 0; i < num_workers_; i++){
-   	next_free_time.push(make_pair(i, 0));
+   	    next_free_time.push(make_pair(i, 0));
     }
     for(int j = 0; j < jobs_.size(); j++){
     	pair<int, long long> next_worker = next_free_time.top();
-	assigned_workers_[j] = next_worker.first;
-	start_times_[j] = next_worker.second;
-	next_free_time.pop();
-	next_free_time.push(make_pair(next_worker.first, next_worker.second+jobs_[j]));
+	    assigned_workers_[j] = next_worker.first;
+	    start_times_[j] = next_worker.second;
+	    next_free_time.pop();
+	    next_free_time.push(make_pair(next_worker.first, next_worker.second+jobs_[j]));
     }
  }
 
